@@ -1,0 +1,70 @@
+<html lang="pt-br">
+<meta charset="utf-8">
+<head>
+   <title>FULLSTACK</title>
+</head>
+<body>
+<form name="form1" method="post" action="">
+    <h1> formulario </h1> <h2> Admissão </h2>
+    <p>Nome:<br>
+    <input name="nome" type="text" id="username" size="30" maxlength="30"></p>
+    <p>Senha:<br>        
+    <input name="senha" type="password" id="senha" size="10" maxlength="10"></p>
+    <p>Sexo:<br><br>
+    <input name="sexo" type="radio" value="Masculino" id="sexo">Masculino
+    <input name="sexo" type="radio" value="Feminino" id="sexo">Feminino</p>
+    <p>Selecione o Turno:<br><br>
+        <input name="turno" type="checkbox" id="turno" value="Manhã">Manhã
+        <input name="turno" type="checkbox" id="turno" value="Tarde">Tarde
+        <input name="turno" type="checkbox" id="turno" value="Noite">Noite</p>
+        <p>Cidade:<br>
+            <select name="cidade" id="cidade">
+            <option value="vazio"></option>
+            <option value="Rio">Rio de Janeiro</option>
+            <option value="São Paulo">São Paulo</option>
+            <option value="Belo Horizonte">Belo Horizonte</option>
+            </select></p>
+            <input type="submit" value="submit" class="sub" id="submit">
+
+                <button>Converse no WhatsApp</button>
+
+</form> 
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+    import {getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js"
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyBG8PQcFZT332_P5nzvFchN-RZVcM8a7uM",
+      authDomain: "fir-one-8fd04.firebaseapp.com",
+      databaseURL: "https://fir-one-8fd04-default-rtdb.firebaseio.com",
+      projectId: "fir-one-8fd04",
+      storageBucket: "fir-one-8fd04.firebasestorage.app",
+      messagingSenderId: "340684039968",
+      appId: "1:340684039968:web:acc9676c91560661649945"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    document.getElementById("submit").addEventListener('click', function(e) {
+        e.preventDefault
+        e.preventDefault();
+        set(ref(db, 'LisboaLindao/' + document.getElementById("username").value),
+    {
+ 
+    username: document.getElementById("username").value,
+    senha: document.getElementById("senha").value,
+    sexo: document.getElementById("sexo").value,
+    turno: document.getElementById("turno").value,
+    cidade: document.getElementById("cidade").value
+});
+        alert("Login Sucessfull  !");
+})
+</script>
+    </body>
+</html>
